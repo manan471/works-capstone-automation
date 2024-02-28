@@ -34,5 +34,5 @@ class Inventory_Page():
 
     def ClickRental(self):
         self.driver.find_element(by=By.XPATH, value=self.click_rental).click()
-        time.sleep(1)
+        time.sleep(2)
 
