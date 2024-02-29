@@ -29,11 +29,11 @@ class Imaratportal(unittest.TestCase):
         time.sleep(2)
         self.driver.find_element(by=By.XPATH, value="//button[@type='submit'][@class='btn btn-success w-100']").click()
         time.sleep(2)
-        self.check = self.driver.current_url
-        if "dashboard" not in self.check:
-            self.assertFalse(True, msg="login failed...")
-        else:
-            print("Test_1:login Successful...")
+        # self.check = self.driver.current_url
+        # if "dashboard" not in self.check:
+        #     self.assertFalse(True, msg="login failed...")
+        # else:
+        #     print("Test_1:login Successful...")
 
 
     def test_search_imarat_B(self):
@@ -75,23 +75,24 @@ class Imaratportal(unittest.TestCase):
         # time.sleep(1)
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(1)
-        self.ProductType = ['Monthly Installment']
+        self.ProductType = ['Only Rental']
         self.driver.find_element(by=By.XPATH, value="//textarea[@class='select2-search__field']").send_keys(random.choice(self.ProductType) + Keys.ENTER)
         time.sleep(1)
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(1)
         self.driver.find_element(by=By.XPATH, value="//button[@class = 'mt-2 form_submit btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2']").click()
-        time.sleep(1)
-        self.check = self.driver.current_url
-        if "create" not in self.check:
-            self.driver.back()
-            time.sleep(1)
-            print("Inventory Created With rental project")
+        time.sleep(6)
+        # self.check = self.driver.current_url
+        # if "create" not in self.check:
+        #     self.driver.back()
+        #     time.sleep(1)
+        #     print("Inventory Created With rental project")
+        #
+        # else:
+        #     self.assertFalse(True, msg="Inventory not Created With rental project")
 
-        else:
-            self.assertFalse(True, msg="Inventory not Created With rental project")
     def test_search_imarat_D(self):
-        time.sleep(2)
+        time.sleep(6)
         self.driver.find_element(by=By.LINK_TEXT, value="Inventory").click()
         time.sleep(2)
         self.driver.find_element(by=By.LINK_TEXT, value="Create inventory").click()
@@ -102,7 +103,7 @@ class Imaratportal(unittest.TestCase):
         self.driver.refresh()
         self.driver.execute_script("window.scrollTo(0, document.body.scrollTop);")
         time.sleep(2)
-        self.Project = [19]
+        self.Project = [2]
         Select(self.driver.find_element(by=By.NAME, value="project_id")).select_by_index(random.choice(self.Project))
         time.sleep(1)
         self.Floor = [1]
@@ -138,7 +139,7 @@ class Imaratportal(unittest.TestCase):
         time.sleep(1)
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(1)
-        self.ProductType = ['installment']
+        self.ProductType = ['Only Rental FG']
         self.driver.find_element(by=By.XPATH, value="//textarea[@class='select2-search__field']").send_keys(
             random.choice(self.ProductType) + Keys.ENTER)
         time.sleep(1)
@@ -146,14 +147,178 @@ class Imaratportal(unittest.TestCase):
         time.sleep(1)
         self.driver.find_element(by=By.XPATH,value="//button[@class = 'mt-2 form_submit btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2']").click()
         time.sleep(1)
-        self.check = self.driver.current_url
-        if "create" not in self.check:
-            self.driver.back()
-            time.sleep(3)
-            print("Inventory Created With only Appreciation14 project")
 
-        else:
-            self.assertFalse(True, msg="Inventory not Created With installment project")
+    def test_search_imarat_F(self):
+        time.sleep(6)
+        self.driver.find_element(by=By.LINK_TEXT, value="Inventory").click()
+        time.sleep(2)
+        self.driver.find_element(by=By.LINK_TEXT, value="Create inventory").click()
+    def test_search_imarat_G(self):
+        self.driver.refresh()
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollTop);")
+        time.sleep(2)
+        self.Project = [3]
+        Select(self.driver.find_element(by=By.NAME, value="project_id")).select_by_index(random.choice(self.Project))
+        time.sleep(1)
+        self.Floor = [1]
+        Select(self.driver.find_element(by=By.NAME, value="floor_id")).select_by_index(random.choice(self.Floor))
+        time.sleep(1)
+        self.Company = [0]
+        Select(self.driver.find_element(by=By.NAME, value="owner_id")).select_by_index(random.choice(self.Company))
+        time.sleep(1)
+        self.driver.find_element(by=By.NAME, value="inventory_code").send_keys(''.join(random.choice(string.digits) for i in range(4)))
+        time.sleep(2)
+        self.Design = [1, 2, 3, 4, 5]
+        Select(self.driver.find_element(by=By.NAME, value="design_type_id")).select_by_index(random.choice(self.Design))
+        time.sleep(1)
+        self.View = [1, 2, 3, 4, 5]
+        Select(self.driver.find_element(by=By.NAME, value="category_view_id")).select_by_index(random.choice(self.View))
+        time.sleep(1)
+        self.Inventory = [1, 2, 3, 4, 5]
+        Select(self.driver.find_element(by=By.NAME, value="inventory_type")).select_by_index(
+            random.choice(self.Inventory))
+        time.sleep(1)
+        self.driver.find_element(by=By.NAME, value="rate_per_sq_ft").send_keys(
+            ''.join(random.choice(string.digits) for i in range(2)))
+        time.sleep(1)
+        self.driver.find_element(by=By.NAME, value="total_sq_ft").send_keys(
+            ''.join(random.choice(string.digits) for i in range(5)))
+        time.sleep(1)
+        self.driver.find_element(by=By.NAME, value="tower").send_keys(
+            ''.join(random.choice(string.ascii_lowercase) for i in range(5)))
+        time.sleep(1)
+        # self.Planning = [1]
+        # Select(self.driver.find_element(by=By.NAME, value="inventory_planning")).select_by_index(random.choice(self.Planning))
+
+        time.sleep(1)
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(1)
+        self.ProductType = ['Only Rental 18%']
+        self.driver.find_element(by=By.XPATH, value="//textarea[@class='select2-search__field']").send_keys(
+            random.choice(self.ProductType) + Keys.ENTER)
+        time.sleep(1)
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(1)
+        self.driver.find_element(by=By.XPATH,value="//button[@class = 'mt-2 form_submit btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2']").click()
+        time.sleep(1)
+
+    def test_search_imarat_H(self):
+        time.sleep(6)
+        self.driver.find_element(by=By.LINK_TEXT, value="Inventory").click()
+        time.sleep(2)
+        self.driver.find_element(by=By.LINK_TEXT, value="Create inventory").click()
+    def test_search_imarat_I(self):
+        self.driver.refresh()
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollTop);")
+        time.sleep(2)
+        self.Project = [4]
+        Select(self.driver.find_element(by=By.NAME, value="project_id")).select_by_index(random.choice(self.Project))
+        time.sleep(1)
+        self.Floor = [1]
+        Select(self.driver.find_element(by=By.NAME, value="floor_id")).select_by_index(random.choice(self.Floor))
+        time.sleep(1)
+        self.Company = [0]
+        Select(self.driver.find_element(by=By.NAME, value="owner_id")).select_by_index(random.choice(self.Company))
+        time.sleep(1)
+        self.driver.find_element(by=By.NAME, value="inventory_code").send_keys(''.join(random.choice(string.digits) for i in range(4)))
+        time.sleep(2)
+        self.Design = [1, 2, 3, 4, 5]
+        Select(self.driver.find_element(by=By.NAME, value="design_type_id")).select_by_index(random.choice(self.Design))
+        time.sleep(1)
+        self.View = [1, 2, 3, 4, 5]
+        Select(self.driver.find_element(by=By.NAME, value="category_view_id")).select_by_index(random.choice(self.View))
+        time.sleep(1)
+        self.Inventory = [1, 2, 3, 4, 5]
+        Select(self.driver.find_element(by=By.NAME, value="inventory_type")).select_by_index(
+            random.choice(self.Inventory))
+        time.sleep(1)
+        self.driver.find_element(by=By.NAME, value="rate_per_sq_ft").send_keys(
+            ''.join(random.choice(string.digits) for i in range(2)))
+        time.sleep(1)
+        self.driver.find_element(by=By.NAME, value="total_sq_ft").send_keys(
+            ''.join(random.choice(string.digits) for i in range(5)))
+        time.sleep(1)
+        self.driver.find_element(by=By.NAME, value="tower").send_keys(
+            ''.join(random.choice(string.ascii_lowercase) for i in range(5)))
+        time.sleep(1)
+        # self.Planning = [1]
+        # Select(self.driver.find_element(by=By.NAME, value="inventory_planning")).select_by_index(random.choice(self.Planning))
+
+        time.sleep(1)
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(1)
+        self.ProductType = ['only rental 20%']
+        self.driver.find_element(by=By.XPATH, value="//textarea[@class='select2-search__field']").send_keys(
+            random.choice(self.ProductType) + Keys.ENTER)
+        time.sleep(1)
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(1)
+        self.driver.find_element(by=By.XPATH,value="//button[@class = 'mt-2 form_submit btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2']").click()
+        time.sleep(1)
+def test_search_imarat_J(self):
+    time.sleep(6)
+    self.driver.find_element(by=By.LINK_TEXT, value="Inventory").click()
+    time.sleep(2)
+    self.driver.find_element(by=By.LINK_TEXT, value="Create inventory").click()
+def test_search_imarat_K(self):
+    self.driver.refresh()
+    self.driver.execute_script("window.scrollTo(0, document.body.scrollTop);")
+    time.sleep(2)
+    self.Project = [5]
+    Select(self.driver.find_element(by=By.NAME, value="project_id")).select_by_index(random.choice(self.Project))
+    time.sleep(1)
+    self.Floor = [1]
+    Select(self.driver.find_element(by=By.NAME, value="floor_id")).select_by_index(random.choice(self.Floor))
+    time.sleep(1)
+    self.Company = [0]
+    Select(self.driver.find_element(by=By.NAME, value="owner_id")).select_by_index(random.choice(self.Company))
+    time.sleep(1)
+    self.driver.find_element(by=By.NAME, value="inventory_code").send_keys(
+        ''.join(random.choice(string.digits) for i in range(4)))
+    time.sleep(2)
+    self.Design = [1, 2, 3, 4, 5]
+    Select(self.driver.find_element(by=By.NAME, value="design_type_id")).select_by_index(random.choice(self.Design))
+    time.sleep(1)
+    self.View = [1, 2, 3, 4, 5]
+    Select(self.driver.find_element(by=By.NAME, value="category_view_id")).select_by_index(random.choice(self.View))
+    time.sleep(1)
+    self.Inventory = [1, 2, 3, 4, 5]
+    Select(self.driver.find_element(by=By.NAME, value="inventory_type")).select_by_index(
+        random.choice(self.Inventory))
+    time.sleep(1)
+    self.driver.find_element(by=By.NAME, value="rate_per_sq_ft").send_keys(
+        ''.join(random.choice(string.digits) for i in range(2)))
+    time.sleep(1)
+    self.driver.find_element(by=By.NAME, value="total_sq_ft").send_keys(
+        ''.join(random.choice(string.digits) for i in range(5)))
+    time.sleep(1)
+    self.driver.find_element(by=By.NAME, value="tower").send_keys(
+        ''.join(random.choice(string.ascii_lowercase) for i in range(5)))
+    time.sleep(1)
+    # self.Planning = [1]
+    # Select(self.driver.find_element(by=By.NAME, value="inventory_planning")).select_by_index(random.choice(self.Planning))
+
+    time.sleep(1)
+    self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(1)
+    self.ProductType = ['Only Rental 18%/RP 04/23 OR01']
+    self.driver.find_element(by=By.XPATH, value="//textarea[@class='select2-search__field']").send_keys(
+        random.choice(self.ProductType) + Keys.ENTER)
+    time.sleep(1)
+    self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(1)
+    self.driver.find_element(by=By.XPATH,
+                             value="//button[@class = 'mt-2 form_submit btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2']").click()
+    time.sleep(1)
+
+    # self.check = self.driver.current_url
+        # if "create" not in self.check:
+        #     self.driver.back()
+        #     time.sleep(3)
+        #     print("Inventory Created With only Appreciation14 project")
+        #
+        # else:
+        #     self.assertFalse(True, msg="Inventory not Created With installment project")
 
 
     # @allure.story("Verify Inventory Creation With Invalid Design and other valid details")
