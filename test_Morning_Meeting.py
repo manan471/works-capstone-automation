@@ -28,10 +28,10 @@ class WorksApp(unittest.TestCase):
     def test_Worksapp_A(self):
         driver = self.driver
         login = Login_Page(driver)
-        time.sleep(2)
-        login.EnterEmail('saif@gmail.com')
+        time.sleep(1)
+        login.EnterEmail('mmbcm@gmail.com')
         login.EnterPassword('12345678')
-        time.sleep(2)
+        time.sleep(1)
         self.check = login.ClickLoginBtn()
         if self.check == True:
             self.assertFalse(True, msg="Test_01:Verify WorksApp login failed with valid email & password")
@@ -42,11 +42,11 @@ class WorksApp(unittest.TestCase):
         driver = self.driver
         login = Login_Page(driver)
         meeting = Morning_Meeting_Page(driver)
-        time.sleep(2)
+        time.sleep(1)
         meeting.ClickMorning_MeetingBtn()
-        time.sleep(2)
+        time.sleep(1)
         # meeting.ClickStart_MeetingBtn()
-        time.sleep(2)
+        time.sleep(1)
         self.check = meeting.DelectAttendance_Section()
         if self.check == True:
             print("Test_02: Verify WorksApp meeting Attendance Section has been Display Successfully")
@@ -57,34 +57,90 @@ class WorksApp(unittest.TestCase):
         driver = self.driver
         login = Login_Page(driver)
         meeting = Morning_Meeting_Page(driver)
-        time.sleep(2)
+        time.sleep(1)
         meeting.EnterAttendance_Comment()
-        time.sleep(2)
+        time.sleep(1)
         meeting.ClickSaveNextBtn()
-        time.sleep(2)
+        time.sleep(1)
         self.check = meeting.DelectKPIs_Section()
         if self.check == True:
             print("Test_03: Verify WorksApp meeting KFI Section has been Display Successfully")
         else:
             self.assertFalse(True, msg="Test_03:Verify WorksApp meeting KFI Section has not been Display Successfully")
-        time.sleep(4)
+        time.sleep(1)
 
     def test_Worksapp_D(self):
         driver = self.driver
         login = Login_Page(driver)
         meeting = Morning_Meeting_Page(driver)
         meeting.ClickKPISectionBtn()
-        time.sleep(2)
+        time.sleep(1)
         meeting.ClickSaveNextBtn()
-        time.sleep(2)
+        time.sleep(1)
         self.check = meeting.DelectNSP_Section()
         if self.check == True:
             print("Test_04: Verify WorksApp meeting NSP Section has been Display Successfully")
         else:
             self.assertFalse(True, msg="Test_04:'Verify WorksApp meeting' NSP Section has not been Display Successfully")
+        time.sleep(1)
+
+    def test_Worksapp_E(self):
+        driver = self.driver
+        login = Login_Page(driver)
+        meeting = Morning_Meeting_Page(driver)
+        meeting.EnterNewSale_Comment()
+        time.sleep(1)
+        meeting.ClickSaveNextBtn()
+        time.sleep(1)
+        self.check = meeting.DelectPanding_Section()
+        if self.check == True:
+            print("Test_05: Verify WorksApp meeting Pending Section has been Display Successfully")
+        else:
+            self.assertFalse(True, msg="Test_05:'Verify WorksApp meeting' Pending Section has not been Display Successfully")
+        time.sleep(1)
+
+    def test_Worksapp_F(self):
+        driver = self.driver
+        login = Login_Page(driver)
+        meeting = Morning_Meeting_Page(driver)
+        meeting.EnterPending_Comment()
+        time.sleep(1)
+        meeting.ClickSaveNextBtn()
+        time.sleep(1)
+        self.check = meeting.DelectRecovery_Section()
+        if self.check == True:
+            print("Test_06: Verify WorksApp meeting Recovery Section has been Display Successfully")
+        else:
+            self.assertFalse(True, msg="Test_06:'Verify WorksApp meeting' Recovery Section has not been Display Successfully")
+        time.sleep(1)
+
+    def test_Worksapp_G(self):
+        driver = self.driver
+        login = Login_Page(driver)
+        meeting = Morning_Meeting_Page(driver)
+        meeting.EnterRecovery_Comment()
+        time.sleep(1)
+        meeting.ClickSaveNextBtn()
+        time.sleep(1)
+        self.check = meeting.DelectReview_Section()
+        if self.check == True:
+            print("Test_07: Verify WorksApp meeting Review Section has been Display Successfully")
+        else:
+            self.assertFalse(True, msg="Test_07:'Verify WorksApp meeting' Review Section has not been Display Successfully")
         time.sleep(5)
 
-
+    def test_Worksapp_H(self):
+        driver = self.driver
+        login = Login_Page(driver)
+        meeting = Morning_Meeting_Page(driver)
+        meeting.Click_FinishBtn()
+        time.sleep(3)
+        self.check = meeting.DelectReview_Section()
+        if self.check == True:
+            print("Test_08: Verify WorksApp meeting finally Done has been Display Successfully")
+        else:
+            self.assertFalse(True, msg="Test_08:'Verify WorksApp meeting' finally has not been Done Display Successfully")
+        time.sleep(5)
 
 
 
