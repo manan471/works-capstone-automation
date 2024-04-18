@@ -14,11 +14,13 @@ import time
 import tracemalloc
 
 import os
+
+from Page_DataBank import DataBank_Page
 # import openpyxl
 from page_Login import Login_Page
 from Page_Lead import Lead_Page
 from page_imarat import Imarat_Page
-# tracemalloc.start()
+# trace malloc.start()
 
 class WorksApp(unittest.TestCase):
     @classmethod
@@ -31,12 +33,12 @@ class WorksApp(unittest.TestCase):
     def test_Worksapp_A(self):
         # self.driver = webdriver.Chrome()
         self.driver.maximize_window()
-        self.driver.get("http://worksapp.propsure.rocks/")
+        self.driver.get("https://worksapp.propsure.rocks/")
         driver = self.driver
         login = Login_Page(driver)
         lead = Lead_Page(driver)
         time.sleep(5)
-        login.EnterEmail("testbcm@gmail.com")
+        login.EnterEmail("mani.shah@gmail.com")
         login.EnterPassword("12345678")
         login.ClickLoginBtn()
         self.check = login.DetectloginPage()
@@ -44,6 +46,29 @@ class WorksApp(unittest.TestCase):
             print("Test_01:Verify WorksApp login page has been display successfully...")
         else:
             self.assertFalse(True, msg="Test_03: Verify WorksApp login failed...")
+
+
+
+
+    # def test_Worksapp_B(self):
+    #     driver = self.driver
+    #     login = Login_Page(driver)
+    #     lead = Lead_Page(driver)
+    #     databank = DataBank_Page(driver)
+    #     time.sleep(5)
+    #     databank.ClickDataBank()
+    #     databank.ClickFilter()
+    #     databank.ClickAddBtn()
+    #     databank.EnterFName()
+    #     databank.EnterLname()
+    #     databank.EnterPhone()
+    #     databank.ClickSaveBtn()
+    #     databank.ClickDataBankListing()
+    #     time.sleep(4)
+
+
+
+
 
     def test_Worksapp_B(self):
         driver = self.driver
@@ -57,19 +82,19 @@ class WorksApp(unittest.TestCase):
         lead.ClickleadConvertBtn()
         time.sleep(2)
         lead.ClickleadPipelineBtn()
-        time.sleep(1)
+        time.sleep(2)
         lead.ClickGoToClientBtn()
         time.sleep(2)
         lead.ClickClientBtn()
         time.sleep(5)
         lead.ClickKYCNextBtn()
-        time.sleep(1)
+        time.sleep(2)
         lead.ClickScheduleMeetingBtn()
         time.sleep(2)
         lead.EnterDesc()
-        time.sleep(1)
+        time.sleep(2)
         lead.ClickSaveDiaryBtn()
-        time.sleep(1)
+        time.sleep(2)
         lead.ClickMarkAsDoneBtn()
         time.sleep(3)
         lead.ClickBPNextBtn()
@@ -77,12 +102,13 @@ class WorksApp(unittest.TestCase):
         lead.ClickIPMNextBtn()
         time.sleep(2)
         lead.ClickCPNextBtn()
-        time.sleep(3)
+        time.sleep(4)
         self.check = lead.DelectKFI()
         if self.check == True:
             print("Test_02:Verify WorksApp inventory section has been display successfully...")
         else:
             self.assertFalse(True, msg="Test_02: Verify WorksApp inventory section has not been display successfully...")
+        time.sleep(4)
 
     def test_Worksapp_C(self):
         driver = self.driver
@@ -105,18 +131,20 @@ class WorksApp(unittest.TestCase):
             print("Test_03:Verify WorksApp inventory listing has been display successfully...")
         else:
             self.assertFalse(True, msg="Test_03:Verify WorksApp inventory listing has not been display successfully...")
+        time.sleep(4)
+
 
     def test_Worksapp_D(self):
         driver = self.driver
         login = Login_Page(driver)
         lead = Lead_Page(driver)
-        time.sleep(2)
+        time.sleep(4)
         lead.ClickKFIButton()
-        time.sleep(3)
+        time.sleep(4)
         lead.ClickSubmittoGenerateKFIButton()
-        time.sleep(2)
+        time.sleep(4)
         lead.ClickCrossBtn()
-        time.sleep(2)
+        time.sleep(3)
         lead.ClickRadiobtn()
         time.sleep(3)
         lead.ClickSaveandNextBtn()
@@ -131,7 +159,7 @@ class WorksApp(unittest.TestCase):
         driver = self.driver
         login = Login_Page(driver)
         lead = Lead_Page(driver)
-        time.sleep(2)
+        time.sleep(4)
         lead.EnterCNIC()
         time.sleep(2)
         lead.ClickCustomerSaveDetailsBtn()
@@ -145,7 +173,7 @@ class WorksApp(unittest.TestCase):
             print("Test_05:Verify WorksApp Receiving Report has been display successfully...")
         else:
             self.assertFalse(True, msg="Test_05:Verify WorksApp Receiving Report  has not been display successfully...")
-        time.sleep(5)
+        time.sleep(4)
 
 
     def test_Worksapp_F(self):
@@ -155,8 +183,6 @@ class WorksApp(unittest.TestCase):
         self.driver.implicitly_wait(10)
         driver = self.driver
         login = Login_Page(driver)
-        driver = self.driver
-        self.driver.implicitly_wait(10)
         imarat = Imarat_Page(driver)
         imarat.EnterEmail("admin@propsure.rocks")
         time.sleep(2)
@@ -181,6 +207,8 @@ class WorksApp(unittest.TestCase):
         imarat.EnterTransactionDate()
         time.sleep(1)
         imarat.EnterTexAmount()
+        time.sleep(2)
+        imarat.EnterCashFlowStatus()
         time.sleep(2)
         imarat.ClickSaveBtn()
         time.sleep(3)
@@ -208,6 +236,7 @@ class WorksApp(unittest.TestCase):
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(5)
 
+
     def test_Worksapp_G(self):
         self.driver.maximize_window()
         self.driver.get("http://worksapp.propsure.rocks/")
@@ -215,7 +244,7 @@ class WorksApp(unittest.TestCase):
         driver = self.driver
         login = Login_Page(driver)
         lead = Lead_Page(driver)
-        time.sleep(5)
+        time.sleep(7)
         login.EnterEmail("testbcm@gmail.com")
         login.EnterPassword("12345678")
         login.ClickLoginBtn()

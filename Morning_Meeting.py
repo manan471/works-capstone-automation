@@ -36,11 +36,13 @@ class Morning_Meeting_Page():
 
 
     def Click_FinishBtn(self):
-        self.driver.find_element(by=By.XPATH, value=self.finishbtn).click()
-        time.sleep(1)
+        for i in range(2):
+            self.driver.find_element(by=By.XPATH, value=self.finishbtn).click()
+            time.sleep(2)
         self.driver.find_element(by=By.XPATH, value="//button[@class = 'MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-18muvbq']").click()
-        time.sleep(1)
+        time.sleep(2)
         self.driver.find_element(by=By.XPATH, value="//button[@class = 'MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1jq3me9']").click()
+        time.sleep(2)
 
     def DelectReview_Section(self):
         if WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.XPATH, self.detect_review))):
@@ -97,19 +99,21 @@ class Morning_Meeting_Page():
     def ClickKPISectionBtn(self):
         self.driver.find_element(by=By.XPATH, value=self.kpi_comment).send_keys("Good Target achieve")
         time.sleep(1)
+
+    def ClickKPIViewBtn(self):
         self.driver.find_element(by=By.XPATH, value=self.click_kpi_viewbtn).click()
-        time.sleep(1)
+        time.sleep(3)
         self.driver.find_element(by=By.XPATH, value=self.crossbtn).click()
         time.sleep(1)
 
 
 
 
-    def DelectKPIs_Section(self):
-        if WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.XPATH, self.detect_kpi))):
-            return True
-        else:
-            return False
+    # def DelectKPIs_Section(self):
+    #     if WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.XPATH, self.detect_kpi))):
+    #         return True
+    #     else:
+    #         return False
 
     def ClickSaveNextBtn(self):
         self.driver.find_element(by=By.XPATH, value=self.click_savenextbtn).click()

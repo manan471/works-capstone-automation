@@ -22,14 +22,14 @@ class Imaratportal(unittest.TestCase):
 
     def test_worksapp_A(self):
         time.sleep(3)
-        self.driver.find_element(by=By.NAME, value="email").send_keys("manan.abbasi@staging.rocks")
+        self.driver.find_element(by=By.NAME, value="email").send_keys("saif@gmail.com")
         time.sleep(2)
         self.driver.find_element(by=By.NAME, value="password").send_keys("12345678")
         time.sleep(1)
         self.driver.find_element(by=By.XPATH, value="//button[text() = 'Login']").click()
         time.sleep(2)
         self.check = self.driver.current_url
-        if "today" not in  self.check:
+        if "today" not in self.check:
             print("Test_1:login Successful...")
         else:
             self.assertFalse(True, msg="login failed...")

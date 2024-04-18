@@ -29,11 +29,11 @@ class Lead_Page():
         self.value = "value"
         self.click_savebtn = "//button[text() = 'Save']"
         self.detect_lead = "//div[@class = 'MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation6 MuiAlert-root MuiAlert-filledSuccess MuiAlert-filled css-juoc2m']"
-        self.click_lead = "(//div[@class = 'MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-1o5cwzc'])[5]"
+        self.click_lead = "(//li[@class = 'MuiListItem-root MuiListItem-gutters MuiListItem-padding css-689nkp'])[6]"
         self.click_selectlead = "(//div[@class = 'MuiBox-root css-yeouz0'])[1]"
-        self.click_convertbtn = "//button[text() = 'Connect']"
+        self.click_convertbtn = "(//span[@class = 'MuiBox-root css-whh5e5'])[4]"
         self.click_pipelineP1 = "(//div[@class = 'MuiBox-root css-5vl6in'])[2]"
-        self.click_gotoclient = "//button[text() = 'Go To Clients']"
+        self.click_gotoclient = "(//span[@class = 'MuiBox-root css-whh5e5'])[5]"
         self.click_clientbtn = "(//div[@class = 'MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-1o5cwzc'])[6]"
         self.click_kycnextbtn = "//button[normalize-space()='Next']"
         self.click_bpnextbtn = "//button[normalize-space()='Next']"
@@ -56,7 +56,7 @@ class Lead_Page():
         self.backbtn = "//button[text() ='Back']"
         self.scheduleMeeting = "//button[text() = 'Schedule a Meeting']"
         self.desc = "desc"
-        self.markasdonbtn = "//button[text() = 'Mark As Done']"
+        self.markasdonbtn = "(//input[@class = 'PrivateSwitchBase-input css-1m9pwf3'])[1]"
         self.savedairybtn = "(//button[text() = 'Save'])[2]"
         self.click_dealbtn = "(//div[@class = 'MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-1o5cwzc'])[7]"
         self.detect_deallisting = "(//div[@class = 'MuiBox-root css-yeouz0'])[1]"
@@ -79,6 +79,12 @@ class Lead_Page():
 
     def ClickMarkAsDoneBtn(self):
         self.driver.find_element(by=By.XPATH, value=self.markasdonbtn).click()
+        time.sleep(2)
+        self.driver.find_element(by=By.XPATH, value="//input[@class = 'MuiSelect-nativeInput css-1k3x8v3']").send_keys('Expected' + Keys.ARROW_DOWN + Keys.ENTER)
+        time.sleep(2)
+        self.driver.find_element(by=By.NAME, value="meeting_amount").send_keys("5000")
+        time.sleep(2)
+        self.driver.find_element(by=By.XPATH, value="(//button[text() = 'Save'])[1]").click()
         time.sleep(2)
 
     def EnterDesc(self):
@@ -115,8 +121,9 @@ class Lead_Page():
 
 
     def EnterCNIC(self):
-        self.driver.find_element(by=By.XPATH, value="(//input[@class = 'MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-1o6z5ng'])[6]").send_keys("1310203755892")
         time.sleep(2)
+        self.driver.find_element(by=By.XPATH, value="(//input[@class = 'MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-1o6z5ng'])[6]").send_keys("1310203755892")
+        time.sleep(3)
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         time.sleep(2)
         self.driver.find_element(by=By.XPATH, value="(//input[@class = 'MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-1o6z5ng'])[12]").send_keys("Meezan Bank")
@@ -136,7 +143,7 @@ class Lead_Page():
 
     def ClickSaveandNextBtn(self):
         self.driver.find_element(by=By.XPATH, value=self.click_saveandnextbtn).click()
-        time.sleep(1)
+        time.sleep(3)
 
 
     def ClickRadiobtn(self):
@@ -146,7 +153,7 @@ class Lead_Page():
 
     def ClickSubmittoGenerateKFIButton(self): 
         self.driver.find_element(by=By.XPATH, value=self.click_submittogeneratekfibtn).click()
-        time.sleep(1)
+        time.sleep(2)
 
     def ClickKFIButton(self):
         self.driver.find_element(by=By.XPATH, value=self.click_kfibtn).click()

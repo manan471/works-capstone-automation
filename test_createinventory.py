@@ -75,7 +75,7 @@ class Imaratportal(unittest.TestCase):
         # time.sleep(1)
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(1)
-        self.ProductType = ['Only Rental']
+        self.ProductType = ['Instalment 09-2023']
         self.driver.find_element(by=By.XPATH, value="//textarea[@class='select2-search__field']").send_keys(random.choice(self.ProductType) + Keys.ENTER)
         time.sleep(1)
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -139,7 +139,7 @@ class Imaratportal(unittest.TestCase):
         time.sleep(1)
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(1)
-        self.ProductType = ['Only Rental FG']
+        self.ProductType = ['Instalment 09-2023']
         self.driver.find_element(by=By.XPATH, value="//textarea[@class='select2-search__field']").send_keys(
             random.choice(self.ProductType) + Keys.ENTER)
         time.sleep(1)

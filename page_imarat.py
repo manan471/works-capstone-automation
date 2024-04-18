@@ -19,13 +19,14 @@ class Imarat_Page():
         self.email = "email"
         self.password = "password"
         self.click_loginbtn = "/html/body/div/div[2]/div/div[2]/div/div/div/div[2]/form/div[4]/button"
-        self.click_iconbtn = "(//a[@class='btn btn-soft-secondary btn-sm btn-icon'])[4]"
+        self.click_iconbtn = "(//a[@class='btn btn-soft-secondary btn-sm btn-icon'])[1]"
         self.click_editbtn = "(//a[@class = 'btn btn-soft-secondary btn-sm btn-icon'])[3]"
         self.click_paymenttype = "payment_type_id"
         self.paymentmode = "payment_mode_id"
         self.officelocation = "office_location_id"
         self.amount = "amount"
         self.bankname = "bank_id"
+        self.cashflowstatus = "cash_flow_status"
         self.transactiondate = "booking_date"
         self.click_savebtn = "//button[@type = 'button'][@class ='mt-2 form_submit submit_reset btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2']"
         self.click_booking = "Bookings"
@@ -118,7 +119,9 @@ class Imarat_Page():
         self.driver.find_element(by=By.XPATH, value=self.clickfinanceactionbtn).click()
         time.sleep(1)
         self.driver.find_element(by=By.XPATH, value=self.click_inprogressbtn).click()
-        time.sleep(1)
+        time.sleep(2)
+        self.driver.find_element(by=By.XPATH, value="(//select[@class = 'form-select cash_flow_status'])[2]").send_keys("Presented" + Keys.ARROW_DOWN + Keys.ENTER)
+        time.sleep(2)
 
 
     def ClickSaveBookingBtn(self):
@@ -173,9 +176,15 @@ class Imarat_Page():
         self.driver.find_element(by=By.NAME, value=self.branchname).send_keys("G-10 Islamabad")
         time.sleep(2)
 
+
     def EnterBankName(self):
         self.driver.find_element(by=By.NAME, value=self.deposit_bankname).send_keys("MCB-Amazon Mall (SMC-PVT) Limited main" + Keys.ARROW_DOWN + Keys.ENTER)
         time.sleep(2)
+
+    def EnterCashFlowStatus(self):
+        self.driver.find_element(by=By.NAME, value=self.cashflowstatus).send_keys("To Be Deposit" + Keys.ARROW_DOWN+Keys.ENTER)
+        time.sleep(2)
+
 
     # def ClickInProgressBtn(self):
     #     self.driver.find_element(by=By.XPATH, value=self.click_inprogressbtn).click()
@@ -300,21 +309,21 @@ class Imarat_Page():
         # self.driver.find_element(by=By.XPATH, value="//button[@class = 'form_submit btn btn-success btn-label right ms-auto ']").click()
         # time.sleep(4)
 
-        self.driver.find_element(by=By.ID, value="serach-agents").send_keys("Abdul")
-        time.sleep(2)
-        self.driver.find_element(by=By.PARTIAL_LINK_TEXT, value="Abdul Salam").click()
-        time.sleep(2)
-
-        self.driver.execute_script("window.scrollTo(0, 500);")
-        time.sleep(2)
-        self.driver.find_element(by=By.XPATH, value="(//input[@type= 'text'])[4]").send_keys("manan abbasi")
-        time.sleep(2)
-        self.driver.find_element(by=By.PARTIAL_LINK_TEXT, value="manan abbasi").click()
-        time.sleep(2)
-        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(3)
-        self.driver.find_element(by=By.XPATH,value="//button[@type ='button'][@data-nexttab= 'pills-experience-tab']").click()
-        time.sleep(3)
+        # self.driver.find_element(by=By.ID, value="serach-agents").send_keys("Abdul")
+        # time.sleep(2)
+        # self.driver.find_element(by=By.PARTIAL_LINK_TEXT, value="Abdul Salam").click()
+        # time.sleep(2)
+        #
+        # self.driver.execute_script("window.scrollTo(0, 500);")
+        # time.sleep(2)
+        # self.driver.find_element(by=By.XPATH, value="(//input[@type= 'text'])[4]").send_keys("manan abbasi")
+        # time.sleep(2)
+        # self.driver.find_element(by=By.PARTIAL_LINK_TEXT, value="manan abbasi").click()
+        # time.sleep(2)
+        # self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        # time.sleep(3)
+        # self.driver.find_element(by=By.XPATH,value="//button[@type ='button'][@data-nexttab= 'pills-experience-tab']").click()
+        # time.sleep(3)
 
 
     def ClickAgainIconBtn(self):
