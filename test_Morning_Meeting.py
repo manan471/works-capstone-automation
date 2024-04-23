@@ -16,6 +16,7 @@ import openpyxl
 
 from Morning_Meeting import Morning_Meeting_Page
 from page_Login import Login_Page
+from Page_DataBank import DataBank_Page
 
 # py
 class WorksApp(unittest.TestCase):
